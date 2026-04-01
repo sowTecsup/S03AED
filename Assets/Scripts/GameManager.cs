@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -44,13 +45,15 @@ public class GameManager : MonoBehaviour
     }
 
     [Button]
-    public void TestLinkedList()
+    public void TestLinkedList(List<string> ListaNombres)
     {
-        ListaDeNombres.Add("Juan");
-        ListaDeNombres.Add("Juan2");
-        ListaDeNombres.Add("Juan3");
-        ListaDeNombres.Add("Juan4");
-        ListaDeNombres.Add("Juan5");
+
+        foreach (string n in ListaNombres)
+        {
+            ListaDeNombres.Add(n);
+        }
+        //ListaDeNombres.RemoveFirst();
+        ListaDeNombres.RemoveLast();
 
         ListaDeNombres.Traverse();
 

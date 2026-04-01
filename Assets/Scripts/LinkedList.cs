@@ -5,7 +5,7 @@ using UnityEngine;
 public class LinkedList<T>
 {
     public Node<T> head = null;
-
+    public int Count;
 
     public void Add(T value)
     {
@@ -28,6 +28,64 @@ public class LinkedList<T>
             Evaluator.SetNext(tempNode);
 
         }
+        Count++;
+    }
+
+    //->O(n)
+    public void RemoveLast()
+    {
+
+        Node<T> Evaluator = head;
+
+        if(Count == 0)
+        {
+            Debug.Log("La lista esta vacia");
+            return;
+        }
+        else if(Count == 1)
+        {
+            head = null;
+            Count--;
+        }
+        else if(Count == 2)
+        {
+            head.SetNext(null);
+            Count--;
+        }
+        else if(Count > 2)
+        {
+            while (Evaluator != null)
+            {
+                if (Evaluator.Next.Next == null)
+                {
+                    break;
+                }
+
+                Evaluator = Evaluator.Next;
+            }
+
+            Evaluator.SetNext(null);
+            Count--;
+        }
+        
+    }
+    //-> O(1)
+    public void RemoveFirst()
+    {
+
+        if(Count <= 1)
+        {
+            head = null;
+            Count--;
+            return;
+        }
+
+        Node<T> Evaluator = head.Next;
+        head.SetNext(null);
+        head = Evaluator;
+        Count--;
+
+
     }
 
     public void Traverse()
