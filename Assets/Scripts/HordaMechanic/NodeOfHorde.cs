@@ -1,11 +1,14 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
+using System;
 
+
+[InlineEditor]
 public class NodeOfHorde
 {
-    [Range(10,30)]
-    public int Life = 15;
+  
+    [ShowInInspector] public int Life = 15;
     public int Str = 10;
     public List<Color> Colors 
         = new List<Color>() {Color.black,Color.red,Color.blue};

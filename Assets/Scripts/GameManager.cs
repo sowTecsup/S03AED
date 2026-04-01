@@ -11,15 +11,18 @@ public class GameManager : MonoBehaviour
 
     public CustomLinkedList HordaManagment;
 
+
+    public List<NodeOfHorde> Nodes;
     void Start()
     {
         HordaManagment.Set(enemyPref);
 
         //HordaManagment.ad
-        HordaManagment.Add(new());
-        HordaManagment.Add(new());
-        HordaManagment.Add(new());
-        HordaManagment.Add(new());
+        foreach (var horde in Nodes)
+        {
+            HordaManagment.Add(horde);
+        }
+
         print(HordaManagment.Count);
     }
     void Update()

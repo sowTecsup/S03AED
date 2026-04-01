@@ -1,8 +1,10 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
+
 public class CustomLinkedList : LinkedList<NodeOfHorde>
 {
+    public List<Enemy> CurrentEnemies = new();
     public Enemy EnemyPrefab = null;
 
 
@@ -23,6 +25,11 @@ public class CustomLinkedList : LinkedList<NodeOfHorde>
             Debug.Log("No hay mas nodos");
             return;
         }
+        foreach (var item in CurrentEnemies)
+        {
+            Destroy(item.gameObject);
+        }
+        CurrentEnemies.Clear();
 
         //->
         for (int i = 0; i < head.Value.Quantity; i++)
@@ -40,6 +47,8 @@ public class CustomLinkedList : LinkedList<NodeOfHorde>
             enemy.SetMat(head.Value.Colors[Random.Range(0,head.Value.Colors.Count)]);
 
             enemy.transform.position = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
+
+            CurrentEnemies.Add(enemy);  
 
         }
 
