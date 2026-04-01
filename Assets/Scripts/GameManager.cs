@@ -19,6 +19,28 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Eureka");
     }
+
+
+    [Button]
+    public void TestNodes()
+    {
+        Node<string> a = new("juan");
+        Node<string> b = new("juan2");
+        Node<string> c = new("juan3");
+        Node<string> d = new("juan4");
+        Node<string> e = new("juan5");
+        a.SetNext(b);
+        b.SetNext(c);
+        c.SetNext(d);
+        d.SetNext(e);
+
+        Node<string> Evaluator = a;
+        while(Evaluator != null)
+        {
+            Debug.Log(Evaluator.Value);
+            Evaluator = Evaluator.Next;
+        }
+    }
  
    
 }

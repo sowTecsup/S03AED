@@ -2,7 +2,7 @@
 
 public class Node<T> 
 {
-    private T value;
+    private T value = default;
 
     private Node<T> next;
 
